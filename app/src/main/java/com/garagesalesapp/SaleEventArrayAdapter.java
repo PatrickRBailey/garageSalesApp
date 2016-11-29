@@ -26,20 +26,34 @@ public class SaleEventArrayAdapter extends ArrayAdapter<SaleEvent>{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         SaleEvent event = getItem(position);
+        ViewHolder viewHolder = null;
         if (convertView == null) {
             LayoutInflater vi = (LayoutInflater)
                     getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = vi.inflate(R.layout.event_list_item, null);
+            viewHolder = new ViewHolder(convertView);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
+
         }
-        TextView address =
-                (TextView) convertView.findViewById(R.id.item_address);
-        address.setText(event.getStreet() + ", " + event.getCity());
-        RatingBar rating =
-                (RatingBar) convertView.findViewById(R.id.item_rating);
-        rating.setRating(event.getRating());
-        TextView distance =
-                (TextView) convertView.findViewById(R.id.item_distance);
-        distance.setText(Double.toString(event.getDistance()));
+        viewHolder.address.setText(event.getStreet() + ", " + event.getCity());
+        viewHolder.rating.setRating(event.getRating());
+        viewHolder.distance.setText(Double.toString(event.getDistance()));
+
+
+
         return convertView;
+    }
+
+    static class ViewHolder {
+        ViewHolder(View view) {
+            address = (TextView) view.findViewById(R.id.item_address);
+            rating = (RatingBar) view.findViewById(R.id.item_rating);
+            distance = (TextView) view.findViewById(R.id.item_distance);
+        }
+        public TextView address;
+        public RatingBar rating;
+        public TextView distance;
     }
 }
