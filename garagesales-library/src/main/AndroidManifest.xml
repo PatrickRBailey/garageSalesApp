@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.garagesaleslibrary.event">
+
+    <application>
+
+    </application>
+
+</manifest>
