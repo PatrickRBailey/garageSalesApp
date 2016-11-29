@@ -1,6 +1,7 @@
 package com.garagesalesapp;
 
 import android.test.AndroidTestCase;
+import android.util.Log;
 
 import com.garagesaleslibrary.event.service.SaleEventManager;
 
@@ -18,6 +19,7 @@ public class SimpleAndroidTest extends AndroidTestCase {
 
         // compare to expected results
         int expectedResults = 15;
+        Log.d("SimpleAndroidTest", "Found events: " + 15);
         assertEquals(expectedResults, actualResults);
     }
 }
